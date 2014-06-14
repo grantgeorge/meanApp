@@ -25,6 +25,14 @@ var ArticleSchema = new Schema({
         required: true,
         trim: true
     },
+    views: {
+        type: Number,
+        required: false
+    },
+    someNumber: {
+        type: Number,
+        required: false
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'

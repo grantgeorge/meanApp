@@ -2,6 +2,8 @@
     <span>{{article.created | date:'medium'}}</span> /
     <span>{{article.user.name}}</span>
     <h2>{{article.title}}</h2>
+    <h2>{{article.someNumber}}</h2>
+    <button class="btn btn-default" ng-click="incrementSomeNumber()">ADD MORE!</button>
     <div data-ng-if="hasAuthorization(article)">
         <a class="btn" href="/#!/articles/{{article._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>

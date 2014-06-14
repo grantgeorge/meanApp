@@ -13,6 +13,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
             if (isValid) {
                 var article = new Articles({
                     title: this.title,
+                    someNumber: this.someNumber,
                     content: this.content
                 });
                 article.$save(function(response) {
@@ -21,6 +22,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 
                 this.title = '';
                 this.content = '';
+                this.someNumber = 0;
             } else {
                 $scope.submitted = true;
             }
@@ -69,6 +71,22 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
                 articleId: $stateParams.articleId
             }, function(article) {
                 $scope.article = article;
+                console.log($scope.article);
+                console.log('here');
+            });
+        };
+
+        $scope.incrementSomeNumber = function() {
+            var article = $scope.article;
+            article.someNumber++;
+            console.log(article);
+            if (!article.updated) {
+                article.updated = [];
+            }
+            article.updated.push(new Date().getTime());
+
+            article.$update(function() {
+                console.log('article updated');
             });
         };
     }
